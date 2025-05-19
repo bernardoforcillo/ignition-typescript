@@ -8,7 +8,6 @@
     "name": "Bernardo Forcillo",
     "email": "me@bernardoforcillo.com"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bernardoforcillo/"
@@ -28,7 +27,7 @@
     "@commitlint/config-conventional": "^19.8.1",
     "@commitlint/format": "^19.8.1",
     "@commitlint/types": "^19.8.1",
-    "@types/node": "^22.15.18",
+    "@types/node": "^22.15.19",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
     "tsx": "^4.19.4",
