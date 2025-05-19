@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@monorepo/blocks",
+  "version": "0.0.0",
+  "scripts": {
+    "dev::tsup": "tsup --watch .",
+    "dev::tailwindcss": "tailwindcss -i ./src/style.css -o ./dist/output.css --watch",
+    "build::tsup": "tsup",
+    "build::tailwindcss": "tailwindcss -i ./src/style.css -o ./dist/output.css",
+    "dev": "concurrently --kill-others \"pnpm run dev::tsup\" \"pnpm run dev::tailwindcss\"",
+    "build": "pnpm run build::tsup && pnpm run build::tailwindcss"
+  },
+  "exports": {
+    "./style.css": "./dist/output.css",
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./atoms/*": {
+      "types": "./dist/atoms/*/index.d.mts",
+      "import": "./dist/atoms/*/index.mjs",
+      "require": "./dist/atoms/*/sindex.js"
+    }
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.13",
+    "@radix-ui/react-separator": "^1.1.6",
+    "clsx": "catalog:tailwindcss",
+    "tailwind-merge": "catalog:tailwindcss"
+  },
+  "peerDependencies": {
+    "@types/react": "catalog:react-next",
+    "@types/react-dom": "catalog:react-next",
+    "lucide-react": "catalog:react-next",
+    "next": "catalog:react-next",
+    "react": "catalog:react-next",
+    "react-dom": "catalog:react-next"
+  },
+  "devDependencies": {
+    "@monorepo/tailwindcss": "workspace:*",
+    "@monorepo/tsconfig": "workspace:*",
+    "@swc/core": "^1.11.24",
+    "@swc/types": "^0.1.21",
+    "@tailwindcss/cli": "catalog:tailwindcss",
+    "@tailwindcss/postcss": "catalog:tailwindcss",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.25.4",
+    "esbuild-plugin-preserve-directives": "^0.0.11",
+    "glob": "^11.0.2",
+    "postcss": "catalog:tailwindcss",
+    "tailwindcss": "catalog:tailwindcss",
+    "tsc-alias": "catalog:typescript",
+    "tsup": "catalog:typescript",
+    "typescript": "catalog:typescript"
+  }
+}

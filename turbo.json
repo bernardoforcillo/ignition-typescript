@@ -1,0 +1,33 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["turbo-cache-key.json"],
+  "tasks": {
+    "build": {
+      "inputs": ["$TURBO_DEFAULT$", "turbo-cache-key.json"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "public/dist/**"],
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "format": {
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": true
+    }
+  },
+  "remoteCache": {
+    "apiUrl": "https://api.cachelayer.dev/",
+    "enabled": true
+  }
+}

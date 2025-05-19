@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@monorepo/tailwindcss",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./style.css": "./src/index.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.7"
+  }
+}

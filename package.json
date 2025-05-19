@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@monorepo/root",
+  "license": "MIT",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "Bernardo Forcillo",
+    "email": "me@bernardoforcillo.com"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernardoforcillo/"
+  },
+  "scripts": {
+    "dev:web": "pnpm turbo dev --filter=@monorepo/web...",
+    "build:web": "tsx scripts/create-turbo-cache-key.ts && pnpm turbo build --filter=@monorepo/web...",
+    "lint": "biome lint --fix .",
+    "format": "biome format --fix .",
+    "pnpm:update:all": "pnpm up --recursive",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
+  },
+  "dependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/format": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
+    "@types/node": "^22.15.18",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "tsx": "^4.19.4",
+    "turbo": "^2.5.3",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json}": ["biome check --write"]
+  },
+  "packageManager": "pnpm@10.6.2"
+}

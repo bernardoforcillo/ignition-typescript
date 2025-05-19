@@ -1,0 +1,109 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "kubectl: expose postgres",
+      "type": "shell",
+      "command": "kubectl",
+      "args": [
+        "port-forward",
+        "-n",
+        "postgres",
+        "service/postgres-cluster-rw",
+        "5432:5432"
+      ],
+      "problemMatcher": {
+        "owner": "kubectl",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1
+        },
+        "source": "kubectl",
+        "applyTo": "allDocuments",
+        "severity": "error"
+      },
+      "isBackground": true,
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "radio-tower"
+      }
+    },
+    {
+      "label": "init: start postgres",
+      "type": "shell",
+      "command": "podman",
+      "args": [
+        "run",
+        "-dt",
+        "-p",
+        "5432:5432",
+        "--network=host",
+        "--volume",
+        "${workspaceFolder}/local/postgres/:/var/lib/postgresql:rw",
+        "--name",
+        "local-postgres",
+        "--env-file",
+        "${workspaceFolder}/.env",
+        "docker.io/postgres:alpine"
+      ],
+      "problemMatcher": {
+        "owner": "podman",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1
+        },
+        "source": "podman",
+        "applyTo": "allDocuments",
+        "severity": "error"
+      },
+      // "dependsOn": ["init: stop postgres"],
+      // "dependsOrder": "sequence",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "radio-tower"
+      }
+    },
+    {
+      "label": "init: stop postgres",
+      "type": "shell",
+      "command": "podman stop local-postgres && podman container rm local-postgres",
+      "problemMatcher": {
+        "owner": "podman",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1
+        },
+        "source": "podman",
+        "applyTo": "allDocuments",
+        "severity": "error"
+      },
+      "icon": {
+        "color": "terminal.ansiYellow",
+        "id": "radio-tower"
+      }
+    },
+    {
+      "label": "init: restart postgres",
+      "dependsOn": ["init: stop postgres", "init: start postgres"],
+      "dependsOrder": "sequence",
+      "problemMatcher": {
+        "owner": "podman",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1
+        },
+        "source": "podman",
+        "applyTo": "allDocuments",
+        "severity": "error"
+      },
+      "icon": {
+        "color": "terminal.ansiMagenta",
+        "id": "radio-tower"
+      }
+    }
+  ]
+}
