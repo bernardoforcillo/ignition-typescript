@@ -43,7 +43,7 @@
   "devDependencies": {
     "@monorepo/tsconfig": "workspace:*",
     "@types/node": "^22.15.18",
-    "drizzle-kit": "^0.30.6",
+    "drizzle-kit": "^0.31.1",
     "glob": "^11.0.2",
     "tsc-alias": "^1.8.16",
     "tsup": "^8.5.0",
