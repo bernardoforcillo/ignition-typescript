@@ -44,7 +44,7 @@
     "@swc/types": "^0.1.21",
     "@tailwindcss/cli": "catalog:tailwindcss",
     "@tailwindcss/postcss": "catalog:tailwindcss",
-    "concurrently": "^9.1.2",
+    "concurrently": "^9.2.0",
     "esbuild": "^0.25.5",
     "esbuild-plugin-preserve-directives": "^0.0.11",
     "glob": "^11.0.2",
