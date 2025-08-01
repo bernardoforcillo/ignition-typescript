@@ -40,7 +40,7 @@
   "devDependencies": {
     "@monorepo/tailwindcss": "workspace:*",
     "@monorepo/tsconfig": "workspace:*",
-    "@swc/core": "^1.11.29",
+    "@swc/core": "^1.13.3",
     "@swc/types": "^0.1.21",
     "@tailwindcss/cli": "catalog:tailwindcss",
     "@tailwindcss/postcss": "catalog:tailwindcss",
