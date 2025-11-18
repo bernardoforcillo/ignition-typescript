@@ -44,7 +44,7 @@
     "@monorepo/tsconfig": "workspace:*",
     "@types/node": "^22.15.29",
     "drizzle-kit": "^0.30.6",
-    "glob": "^11.0.2",
+    "glob": "^11.1.0",
     "tsc-alias": "^1.8.16",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
