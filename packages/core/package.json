@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@monorepo/database": "workspace:*",
-    "better-auth": "^1.2.8",
+    "better-auth": "^1.4.2",
     "stripe": "^18.2.1"
   },
   "devDependencies": {
